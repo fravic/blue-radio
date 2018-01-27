@@ -1249,6 +1249,10 @@ Prefab:
       propertyPath: m_Name
       value: BasicUnit (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1529498478343638, guid: 7f73ef24784e8f4499ebe19021700ca2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f73ef24784e8f4499ebe19021700ca2, type: 2}
   m_IsPrefabParent: 0
@@ -1703,30 +1707,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4075040410360260, guid: ce689078f0ad94455a8b3cfe31f01fc8, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 9.259001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075040410360260, guid: ce689078f0ad94455a8b3cfe31f01fc8, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 6.5660005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075040410360260, guid: ce689078f0ad94455a8b3cfe31f01fc8, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -170.011
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075040410360260, guid: ce689078f0ad94455a8b3cfe31f01fc8, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 5.504841
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075040410360260, guid: ce689078f0ad94455a8b3cfe31f01fc8, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 5.504829
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075040410360260, guid: ce689078f0ad94455a8b3cfe31f01fc8, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 5.504831
-      objectReference: {fileID: 0}
     - target: {fileID: 1317876521303276, guid: ce689078f0ad94455a8b3cfe31f01fc8, type: 2}
       propertyPath: m_Name
       value: House01 (4)
@@ -1886,6 +1866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1685636082}
   - component: {fileID: 1685636081}
+  - component: {fileID: 1685636083}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1917,6 +1898,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1685636083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1685636080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acbcda405aacec47a74c41bc6c6e84d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Instance: {fileID: 0}
+  BlueInfluence: 0
+  RedInfluence: 0
+  housesList: []
 --- !u!1 &1772404069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,7 +1965,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 200
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2011,7 +2007,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b203c395a193a174e9ae79fead005787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 30
+  scrollingSpeed: 1
+  panningSpeed: 15
+  panBorder: 20
+  togglePan: 0
 --- !u!114 &1772404075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2188,6 +2187,10 @@ Prefab:
     - target: {fileID: 1529498478343638, guid: 7f73ef24784e8f4499ebe19021700ca2, type: 2}
       propertyPath: m_Name
       value: BasicUnit (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529498478343638, guid: 7f73ef24784e8f4499ebe19021700ca2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f73ef24784e8f4499ebe19021700ca2, type: 2}

@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SidePan : MonoBehaviour {
+public class SidePan : MonoBehaviour
+{
 
 
-    [SerializeField] private float ScrollingSpeed;
+    [SerializeField]
+    private float ScrollingSpeed;
 
-    private void MoveCamera(float x, float z)
+    private void MoveCamera(float x, float y)
     {
         float newX = x * ScrollingSpeed * Time.deltaTime;
-        float newZ = z * ScrollingSpeed * Time.deltaTime;
+        float newY = y * ScrollingSpeed * Time.deltaTime;
 
-        transform.Translate(new Vector3(newX, 0, newZ));
+        transform.Translate(new Vector3(newX, newY, 0));
     }
 
     void Update()

@@ -22,9 +22,11 @@ GameObject:
   - component: {fileID: 33564409687782096}
   - component: {fileID: 23971129304348904}
   - component: {fileID: 95009305175987928}
+  - component: {fileID: 65583306439917254}
+  - component: {fileID: 114314848143989800}
   m_Layer: 0
   m_Name: House01
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,13 +37,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317876521303276}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.49, y: 2.57, z: 5.02}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalRotation: {x: -0.07530315, y: -0.99172556, z: 0.06388131, w: 0.08203103}
+  m_LocalPosition: {x: 321.9, y: 5.72, z: 255.4}
+  m_LocalScale: {x: 5.504841, y: 5.504829, z: 5.504831}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.5660005, y: -170.011, z: 9.259001}
 --- !u!23 &23971129304348904
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -83,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317876521303276}
   m_Mesh: {fileID: 4300000, guid: c78cf858e7aba47ada3b1c580a8aeb60, type: 3}
+--- !u!65 &65583306439917254
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317876521303276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4290121, y: 1.464355, z: 1.109226}
+  m_Center: {x: 0.18721297, y: 0.0858655, z: -0.0055419803}
 --- !u!95 &95009305175987928
 Animator:
   serializedVersion: 3
@@ -100,3 +114,15 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114314848143989800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317876521303276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d6ee493437ec5409be0370de2be5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  influence: 0

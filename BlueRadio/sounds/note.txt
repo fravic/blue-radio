@@ -1,0 +1,6 @@
+Check the subdirectories for category-specific notes about the songs within
+
+The songs in the root directory have no real purpose, but maybe they could be used at specific events
+	- Start of the game
+	- Start of a level
+	- End of a level upon victory

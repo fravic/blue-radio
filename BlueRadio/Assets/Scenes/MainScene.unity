@@ -1929,6 +1929,7 @@ GameObject:
   - component: {fileID: 1772404071}
   - component: {fileID: 1772404070}
   - component: {fileID: 1772404074}
+  - component: {fileID: 1772404075}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1967,7 +1968,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 200
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1993,7 +1994,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1772404069}
   m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
-  m_LocalPosition: {x: 0.28, y: 29.57, z: -9.04}
+  m_LocalPosition: {x: 0.28, y: 66.7, z: -9.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2010,7 +2011,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b203c395a193a174e9ae79fead005787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingSpeed: 1
+  scrollingSpeed: 30
+--- !u!114 &1772404075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1772404069}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1baadf240669f4596a13d8f8f09c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScrollingSpeed: 15
 --- !u!1001 &1777035051
 Prefab:
   m_ObjectHideFlags: 0
@@ -2386,6 +2399,21 @@ Prefab:
     - target: {fileID: 1374778000598534, guid: 1a3c596c87cc78942a4cf5deeb987df3, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 218425274989512492, guid: 1a3c596c87cc78942a4cf5deeb987df3,
+        type: 2}
+      propertyPath: m_DetailObjectDistance
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 218425274989512492, guid: 1a3c596c87cc78942a4cf5deeb987df3,
+        type: 2}
+      propertyPath: m_TreeMaximumFullLODCount
+      value: 878
+      objectReference: {fileID: 0}
+    - target: {fileID: 218425274989512492, guid: 1a3c596c87cc78942a4cf5deeb987df3,
+        type: 2}
+      propertyPath: m_TreeCrossFadeLength
+      value: 63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a3c596c87cc78942a4cf5deeb987df3, type: 2}

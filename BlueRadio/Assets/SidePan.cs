@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SidePan : MonoBehaviour {
+public class SidePan : MonoBehaviour
+{
 
 
-    [SerializeField] private float ScrollingSpeed;
+    [SerializeField]
+    private float ScrollingSpeed;
 
     private void MoveCamera(float x, float y)
     {

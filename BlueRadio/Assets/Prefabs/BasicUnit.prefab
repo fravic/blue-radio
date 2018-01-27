@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1529498478343638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.53, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4473177861626238}
@@ -170,6 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingIndicator: {fileID: 1518021118271360, guid: cbaee37b8ec52c84a9168998b0f55d9f,
     type: 2}
+  speed: 20
+  acceleration: 20
 --- !u!195 &195612055506740074
 NavMeshAgent:
   m_ObjectHideFlags: 1

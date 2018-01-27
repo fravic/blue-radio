@@ -440,21 +440,19 @@ MonoBehaviour:
   osmTerrainBottomLon: 0
   osmTerrainLeftLat: 0
   osmTerrainRightLat: 0
-  terrainMinIndent: 1.4648438
+  terrainMinIndent: 0
   minIndent: 5
   minSurrounding: 5
   terrainY: 0
-  terrainDetailSplatX: 0.24414062
-  terrainDetailSplatY: 0.24414062
-  detailOffsetVec: {x: 0.24414062, y: 0, z: 0.24414062}
+  terrainDetailSplatX: 50
+  terrainDetailSplatY: 50
+  detailOffsetVec: {x: 50, y: 0, z: 50}
   raise: 0
   baseVector: {x: 0, y: 0, z: 0}
   mirrorCrossings: 1
   terrainNames:
   - All Terrains
-  - Terrain
   terrainObjects:
-  - {fileID: 0}
   - {fileID: 0}
   terrainSplatTextures:
   - Splat 1 - grass-texture3
@@ -12994,7 +12992,7 @@ MonoBehaviour:
   sideObjectNames: []
   selectedSO: 0
   rebuildSos: 0
-  sosCleared: 1
+  sosCleared: 0
   isSideObject: 0
   startOffsetActiveMarker: -1
   endOffsetActiveMarker: -1

@@ -27,10 +27,20 @@ public class ClickToMove : MonoBehaviour
 
     public void MoveTo(Vector3 dest)
     {
+        UnitModeBehaviour mb = GetComponent<UnitModeBehaviour>();
+        // Can't move if not in Van mode
+        if (mb.currentMode != UnitModeBehaviour.UnitMode.Van) {
+            return;
+        }
         agent.destination = dest;
         Debug.Log("Unit move: " + name + " to: " + dest);
         DestroyIndicator();
         currentIndicator = GameObject.Instantiate(movingIndicator, dest, Quaternion.identity);
+    }
+
+    public void StopMovement() {
+        agent.isStopped = true;
+        DestroyIndicator();
     }
 
     private void DestroyIndicator()
@@ -48,12 +58,12 @@ public class ClickToMove : MonoBehaviour
         if (Physics.Raycast(transform.position, -transform.up, out hit))
         {
             var targetRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);       
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
         }
 
         float dist = agent.remainingDistance;
-        if (dist != Mathf.Infinity && 
-            agent.pathStatus == NavMeshPathStatus.PathComplete && 
+        if (dist != Mathf.Infinity &&
+            agent.pathStatus == NavMeshPathStatus.PathComplete &&
             agent.remainingDistance == 0) //Arrived
         {
             DestroyIndicator();

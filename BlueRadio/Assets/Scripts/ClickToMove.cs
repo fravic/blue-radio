@@ -18,21 +18,31 @@ public class ClickToMove : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    public void MoveTo(Vector3 dest)
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            RaycastHit hit;
+        agent.destination = dest;
+        Debug.Log("Unit move: " + name + " to: " + dest);
+        DestroyIndicator();
+        currentIndicator = GameObject.Instantiate(movingIndicator, dest, Quaternion.identity);
+    }
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000))
-            {
-                agent.destination = hit.point;
-                if (currentIndicator != null)
-                {
-                    GameObject.Destroy(currentIndicator);
-                }
-                currentIndicator = GameObject.Instantiate(movingIndicator, hit.point, Quaternion.identity);
-            }
+    private void DestroyIndicator()
+    {
+        if (currentIndicator != null)
+        {
+            GameObject.Destroy(currentIndicator);
+            currentIndicator = null;
+        }
+    }
+
+    private void Update()
+    {
+        float dist = agent.remainingDistance;
+        if (dist != Mathf.Infinity && 
+            agent.pathStatus == NavMeshPathStatus.PathComplete && 
+            agent.remainingDistance == 0) //Arrived
+        {
+            DestroyIndicator();
         }
     }
 }

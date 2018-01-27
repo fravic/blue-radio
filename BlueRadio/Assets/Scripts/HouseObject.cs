@@ -28,4 +28,13 @@ public class HouseObject : MonoBehaviour
             influenceIndicator.GetComponent<Renderer>().material.color = Color.red;
         }
     }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerSphere" || other.gameObject.tag == "EnemySphere")
+        {
+            influence = 0;
+            influenceIndicator.SetActive(false);
+        }
+    }
 }

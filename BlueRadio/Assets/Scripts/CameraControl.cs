@@ -1,14 +1,51 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour {
 
     [SerializeField] private float scrollingSpeed;
+    [SerializeField] private float panningSpeed;
+    [SerializeField] private float panBorder;
+    [SerializeField] private bool togglePan;
+
+    private void MoveCamera(float x, float z)
+    {
+        float newX = x * panningSpeed * Time.deltaTime;
+        float newZ = z * panningSpeed * Time.deltaTime;
+
+        transform.position += new Vector3(newX, 0, newZ);
+    }
+
+    void TrySidePan() {
+        Vector3 mousePos = Input.mousePosition;
+
+        int border = 10;
+
+        if (mousePos.x >= Screen.width - panBorder)
+        {
+            MoveCamera(1, 0);
+        }
+        else if (mousePos.x <= 0 + panBorder)
+        {
+            MoveCamera(-1, 0);
+        }
+
+        if (mousePos.y >= Screen.height - panBorder)
+        {
+            MoveCamera(0, 1);
+        }
+        else if (mousePos.y <= 0 + panBorder)
+        {
+            MoveCamera(0, -1);
+        }
+    }
 
 	void Update () {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        transform.position += scrollingSpeed * new Vector3(x, 0.0f, z) * Time.deltaTime;
+        transform.position += scrollingSpeed * new Vector3(x, 0.0f, z);
+        if (togglePan)
+            TrySidePan();
     }
 }

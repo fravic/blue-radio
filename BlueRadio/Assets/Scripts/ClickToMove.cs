@@ -8,7 +8,10 @@ using UnityEngine.AI;
 
 public class ClickToMove : MonoBehaviour
 {
-    NavMeshAgent agent;
+    private NavMeshAgent agent;
+    [SerializeField] private GameObject movingIndicator;
+
+    private GameObject currentIndicator;
 
     void Start()
     {
@@ -24,6 +27,11 @@ public class ClickToMove : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000))
             {
                 agent.destination = hit.point;
+                if (currentIndicator != null)
+                {
+                    GameObject.Destroy(currentIndicator);
+                }
+                currentIndicator = GameObject.Instantiate(movingIndicator, hit.point, Quaternion.identity);
             }
         }
     }

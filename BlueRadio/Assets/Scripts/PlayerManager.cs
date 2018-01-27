@@ -12,10 +12,10 @@ public class PlayerManager : Singleton<PlayerManager> {
         if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
-            if ((selectedUnits[0] != null) && 
+            if ((selectedUnits[0] != null) &&
                 Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000))
             {
-                selectedUnits[0].GetComponent<ClickToMove>().MoveTo(hit.point);            
+                selectedUnits[0].GetComponent<ClickToMove>().MoveTo(hit.point);
             }
         }
     }
@@ -37,9 +37,18 @@ public class PlayerManager : Singleton<PlayerManager> {
         }
     }
 
+    private void TransformToTower()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            selectedUnits[0].GetComponent<UnitModeBehaviour>().Toggle();
+        }
+    }
+
     void Update()
     {
         ClickToSelect();
-        ClickToMove();        
+        ClickToMove();
+        TransformToTower();
     }
 }

@@ -8,14 +8,21 @@ using UnityEngine.AI;
 
 public class ClickToMove : MonoBehaviour
 {
-    private NavMeshAgent agent;
     [SerializeField] private GameObject movingIndicator;
+    [SerializeField] private float speed;
+    [SerializeField] private float acceleration;
+
+    private NavMeshAgent agent;
+
 
     private GameObject currentIndicator;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        agent.speed = speed;
+        agent.acceleration = acceleration;
     }
 
     public void MoveTo(Vector3 dest)

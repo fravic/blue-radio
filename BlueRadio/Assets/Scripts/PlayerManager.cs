@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class PlayerManager : Singleton<PlayerManager> {
 
-    [SerializeField] private GameObject movingIndicator;
-
     private GameObject[] selectedUnits = new GameObject[1];
 
     private void ClickToMove()

@@ -9,6 +9,6 @@ public class CameraControl : MonoBehaviour {
 	void Update () {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        transform.position += scrollingSpeed * new Vector3(x, 0.0f, z);
+        transform.position += scrollingSpeed * new Vector3(x, 0.0f, z) * Time.deltaTime;
     }
 }

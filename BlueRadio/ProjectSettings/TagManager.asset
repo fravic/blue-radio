@@ -8,6 +8,8 @@ TagManager:
   - House
   - PlayerSphere
   - EnemySphere
+  - PlayerMotherbase
+  - EnemyMotherbase
   layers:
   - Default
   - TransparentFX

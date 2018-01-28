@@ -5,8 +5,9 @@ using UnityEngine;
 // MoveToClickPoint.cs
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Networking;
 
-public class ClickToMove : MonoBehaviour
+public class ClickToMove : NetworkBehaviour
 {
     [SerializeField] private GameObject movingIndicator;
     [SerializeField] private float speed;
@@ -17,19 +18,54 @@ public class ClickToMove : MonoBehaviour
 
     private GameObject currentIndicator;
 
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        var agent = GetComponent<NavMeshAgent>();
+        agent.Warp(transform.position);
+        agent.enabled = true;
+        agent.Warp(transform.position);
+        Debug.Log("Spawn unit " + name + " on client");
+    }
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
 
         agent.speed = speed;
         agent.acceleration = acceleration;
+
+        agent.Warp(transform.position);
+        agent.enabled = true;
+        agent.Warp(transform.position);
+        Debug.Log("Spawn unit " + name + " on client");
+
     }
 
-    public void MoveTo(Vector3 dest)
+    [Command]
+    public void CmdMoveTo(Vector3 dest)
     {
         UnitModeBehaviour mb = GetComponent<UnitModeBehaviour>();
         // Can't move if not in Van mode
-        if (mb.currentMode == UnitModeBehaviour.UnitMode.Tower) {
+        if (mb.currentMode == UnitModeBehaviour.UnitMode.Tower)
+        {
+            return;
+        }
+        agent.destination = dest;
+        Debug.Log("Unit move: " + name + " to: " + dest);
+        DestroyIndicator();
+        currentIndicator = GameObject.Instantiate(movingIndicator, dest, Quaternion.identity);
+    }
+
+
+    public void MoveTo(Vector3 dest)
+    {
+        //CmdMoveTo(dest);
+
+        UnitModeBehaviour mb = GetComponent<UnitModeBehaviour>();
+        // Can't move if not in Van mode
+        if (mb.currentMode == UnitModeBehaviour.UnitMode.Tower)
+        {
             return;
         }
         agent.destination = dest;

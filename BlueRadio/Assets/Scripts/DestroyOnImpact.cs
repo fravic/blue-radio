@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class DestroyOnImpact : MonoBehaviour {
+public class DestroyOnImpact : NetworkBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +21,6 @@ public class DestroyOnImpact : MonoBehaviour {
     {
         go.SetActive(false);
         yield return null;
-        Destroy(go);
+        NetworkManager.Destroy(go);
     }
 }

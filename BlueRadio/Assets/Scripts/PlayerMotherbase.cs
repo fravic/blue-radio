@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.AI;
+using UnityEngine.Networking;
 
-public class PlayerMotherbase : MonoBehaviour {
+public class PlayerMotherbase : NetworkBehaviour {
 
   public Transform unitSpawnPoint;
 
@@ -18,29 +19,50 @@ public class PlayerMotherbase : MonoBehaviour {
 
   private float timeSincePayday = 0.0f;
 
-  public void SpawnAggressiveUnit() {
-    if (money >= AGGRESIVE_COST) {
-      money -= AGGRESIVE_COST;
-      var go = Instantiate(aggressiveUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
-      var agent = go.GetComponent<NavMeshAgent>();
-      agent.Warp(unitSpawnPoint.position);
-      agent.enabled = true;
-      agent.Warp(unitSpawnPoint.position);
+    [Command]
+    private void CmdSpawnAggressiveUnit(GameObject clientGo)
+    {
+        var go = Instantiate(aggressiveUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
+        var agent = go.GetComponent<NavMeshAgent>();
+        agent.Warp(unitSpawnPoint.position);
+        agent.enabled = true;
+        agent.Warp(unitSpawnPoint.position);
+        //NetworkServer.SpawnWithClientAuthority(go, base.connectionToClient);
+        NetworkServer.SpawnWithClientAuthority(go, clientGo.GetComponent<NetworkIdentity>().connectionToClient);
     }
-  }
 
-  public void SpawnConstructionUnit() {
-    if (money >= CONSTRUCT_COST) {
-      money -= CONSTRUCT_COST;
+    public void SpawnAggressiveUnit()
+    {
+        if (money >= AGGRESIVE_COST)
+        {
+            money -= AGGRESIVE_COST;
+            CmdSpawnAggressiveUnit(gameObject);
+        }
+    }
+
+   [Command]
+    public void CmdSpawnConstructionUnit(GameObject clientGo)
+    {
       var go = Instantiate(constructionUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
       var agent = go.GetComponent<NavMeshAgent>();
       agent.Warp(unitSpawnPoint.position);
       agent.enabled = true;
       agent.Warp(unitSpawnPoint.position);
+      NetworkServer.SpawnWithClientAuthority(go, clientGo.GetComponent<NetworkIdentity>().connectionToClient);
+      //NetworkServer.SpawnWithClientAuthority(go, base.connectionToClient);
     }
-  }
 
-  private void AddMoney()
+    public void SpawnConstructionUnit()
+    {
+        if (money >= CONSTRUCT_COST)
+        {
+            money -= CONSTRUCT_COST;
+            CmdSpawnConstructionUnit(gameObject);
+        }
+    }
+
+
+    private void AddMoney()
   {
       if (Time.time - timeSincePayday > 1)
       {

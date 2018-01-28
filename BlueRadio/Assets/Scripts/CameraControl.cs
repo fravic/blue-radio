@@ -41,11 +41,32 @@ public class CameraControl : MonoBehaviour {
         }
     }
 
+    void CapCameraPos()
+    {
+        float xmin = -275;
+        float xmax = 47;
+        float zmin = -180;
+        float zmax = 197;
+
+        Debug.Log(transform.position.x + " " + transform.position.y + " " + transform.position.z);
+
+        if (transform.position.x < xmin)
+            transform.position = new Vector3(xmin, transform.position.y, transform.position.z);
+        else if (transform.position.x > xmax)
+            transform.position = new Vector3(xmax, transform.position.y, transform.position.z);
+
+        if (transform.position.z < zmin)
+            transform.position = new Vector3(transform.position.x, transform.position.y, zmin);
+        else if (transform.position.z > zmax)
+            transform.position = new Vector3(transform.position.x, transform.position.y, zmax);
+    }
+
 	void Update () {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         transform.position += scrollingSpeed * new Vector3(x, 0.0f, z);
         if (togglePan)
             TrySidePan();
+        CapCameraPos();
     }
 }

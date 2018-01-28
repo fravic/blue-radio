@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GameManager : NetworkBehaviour
+public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance;
@@ -53,7 +53,9 @@ public class GameManager : NetworkBehaviour
     {
         base.OnStartLocalPlayer();
         team = ++nextTeam;
-        //Init()
+        Debug.Log("initing motherbase...2324454");
+
+        GetLocalMotherbaseComponent().Init(team);
     }
 
    public PlayerMotherbase GetLocalMotherbaseComponent()

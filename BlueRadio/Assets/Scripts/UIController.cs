@@ -27,10 +27,11 @@ public class UIController : NetworkBehaviour {
     constructionUnitBtn.onClick.AddListener(AddConstructionUnit);
   }
 
-   private void ManageIconGreyOut()
-   {
+    private void ManageIconGreyOut()
+    {
         PlayerMotherbase motherbase = GameManager.Instance.GetLocalMotherbaseComponent();
-
+        if (!motherbase)
+            return;
         if (motherbase)
         {
             if (motherbase.money < PlayerMotherbase.AGGRESIVE_COST)
@@ -46,11 +47,11 @@ public class UIController : NetworkBehaviour {
             // Update money indicator
             moneyLabel.text = "$" + motherbase.money;
         }
-   }
+    }
 
   public void Update()
   {
-       ManageIconGreyOut();
+       //ManageIconGreyOut();
 
         // Update influence indicators
         int blueInf = GameManager.Instance.BlueInfluence;

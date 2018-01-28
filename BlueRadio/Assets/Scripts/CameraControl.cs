@@ -48,7 +48,7 @@ public class CameraControl : MonoBehaviour {
         float zmin = 30;
         float zmax = 400;
 
-        Debug.Log(transform.position.x + " " + transform.position.y + " " + transform.position.z);
+        ///Debug.Log(transform.position.x + " " + transform.position.y + " " + transform.position.z);
 
         if (transform.position.x < xmin)
             transform.position = new Vector3(xmin, transform.position.y, transform.position.z);

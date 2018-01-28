@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.AI;
+using UnityEngine.Networking;
 
-public class PlayerMotherbase : MonoBehaviour {
+public class PlayerMotherbase : NetworkBehaviour {
 
     public Transform unitSpawnPoint;
 
@@ -22,12 +23,15 @@ public class PlayerMotherbase : MonoBehaviour {
 
     public void Init(GameManager.TeamType teamType)
     {
+        Debug.Log("initing motherbase...");
         switch (teamType)
         {
             case GameManager.TeamType.ATANDTURF:
+                Debug.Log("initing at&turf");
                 SphereRenderer.material.color = Color.blue;
                 break;
             case GameManager.TeamType.VERIZONE:
+                Debug.Log("initing VERIZONE");
                 SphereRenderer.material.color = Color.red;
                 break;
         }

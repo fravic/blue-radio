@@ -3028,7 +3028,6 @@ GameObject:
   - component: {fileID: 407649946}
   - component: {fileID: 407649945}
   - component: {fileID: 407649944}
-  - component: {fileID: 407649943}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: PlayerMotherbase
@@ -3050,18 +3049,6 @@ Transform:
   m_Father: {fileID: 1049509222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
---- !u!114 &407649943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114056675389822924, guid: 1a3c596c87cc78942a4cf5deeb987df3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 407649941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b9d94f4c0e1e8d4aaf16d966b2fb697, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &407649944
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14552,6 +14539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcd6b13089877d41a80ec35f9f2f15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedUnitIcon: {fileID: 0}
   aggressiveUnitPrefab: {fileID: 1529498478343638, guid: 9dbfc3d3c8a00d34eb4a7a8f2660b453,
     type: 2}
   constructionUnitPrefab: {fileID: 1529498478343638, guid: 7f73ef24784e8f4499ebe19021700ca2,

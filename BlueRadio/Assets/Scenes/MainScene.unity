@@ -3492,6 +3492,10 @@ Prefab:
       propertyPath: m_TreeCrossFadeLength
       value: 63
       objectReference: {fileID: 0}
+    - target: {fileID: 1374778000598534, guid: 1a3c596c87cc78942a4cf5deeb987df3, type: 2}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a3c596c87cc78942a4cf5deeb987df3, type: 2}
   m_IsPrefabParent: 0

@@ -10,6 +10,7 @@ TagManager:
   - EnemySphere
   - PlayerMotherbase
   - EnemyMotherbase
+  - Terrain
   layers:
   - Default
   - TransparentFX

@@ -8,18 +8,32 @@ public class UIController : MonoBehaviour {
 
   const float GAME_TIME = 60 * 3;
 
+  public Text moneyLabel;
   public Text blueScoreLabel;
   public Text redScoreLabel;
   public Text timerLabel;
   public GameObject blueBar;
   public GameObject redBar;
+  public Button aggressiveUnitBtn;
+  public Button constructionUnitBtn;
 
   float gameStartTime;
 
   public void Start() {
+    aggressiveUnitBtn.onClick.AddListener(AddAggressiveUnit);
+    constructionUnitBtn.onClick.AddListener(AddConstructionUnit);
   }
 
   public void Update() {
+    // Only enable buttons if we have enough money
+    if (PlayerManager.Instance.money < PlayerManager.UNIT_COST) {
+      aggressiveUnitBtn.interactable = false;
+      constructionUnitBtn.interactable = false;
+    }
+
+    // Update money indicator
+    moneyLabel.text = "$" + PlayerManager.Instance.money;
+
     // Update influence indicators
     int blueInf = GameManager.Instance.BlueInfluence;
     int redInf = GameManager.Instance.RedInfluence;
@@ -36,5 +50,13 @@ public class UIController : MonoBehaviour {
     int seconds = Mathf.FloorToInt(timeLeft % 60);
     string secondsStr = seconds < 10 ? "0" + seconds : seconds + "";
     timerLabel.text = minutesStr + ":" + secondsStr;
+  }
+
+  private void AddAggressiveUnit() {
+    PlayerManager.Instance.SpawnAggressiveUnit();
+  }
+
+  private void AddConstructionUnit() {
+    PlayerManager.Instance.SpawnConstructionUnit();
   }
 }

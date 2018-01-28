@@ -5,12 +5,33 @@ using UnityEngine.AI;
 
 public class PlayerManager : Singleton<PlayerManager> {
 
+    public GameObject aggressiveUnitPrefab;
+    public GameObject constructionUnitPrefab;
+
+    public const int UNIT_COST = 200;
+
+    public int money;
+
     private List<GameObject> selectedUnits = new List<GameObject>();
 
     private float leftButtonTime;
 
     public void Start() {
         //selectedUnits.Add(new GameObject());
+    }
+
+    public void SpawnAggressiveUnit() {
+        if (money >= UNIT_COST) {
+            money -= UNIT_COST;
+            Instantiate(aggressiveUnitPrefab);
+        }
+    }
+
+    public void SpawnConstructionUnit() {
+        if (money >= UNIT_COST) {
+            money -= UNIT_COST;
+            Instantiate(constructionUnitPrefab);
+        }
     }
 
     private void ClickToMove()

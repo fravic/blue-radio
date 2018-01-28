@@ -2706,8 +2706,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcd6b13089877d41a80ec35f9f2f15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggressiveUnitPrefab: {fileID: 0}
-  constructionUnitPrefab: {fileID: 0}
+  aggressiveUnitPrefab: {fileID: 1529498478343638, guid: 9dbfc3d3c8a00d34eb4a7a8f2660b453,
+    type: 2}
+  constructionUnitPrefab: {fileID: 1529498478343638, guid: 7f73ef24784e8f4499ebe19021700ca2,
+    type: 2}
   money: 1000
 --- !u!4 &1685636082
 Transform:

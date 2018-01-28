@@ -1,0 +1,3 @@
+These sound files could be used for the various triggers, such as:
+	- When one of the player's trucks leaves cell service (lose control/signal)
+	- When an enemy truck or tower is discovered and appears

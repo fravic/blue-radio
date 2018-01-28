@@ -37,28 +37,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public enum TeamType
-    {
-        ATANDTURF,
-        VERIZONE,
-        COUNT,
-    };
-
-   // [SyncVar]
-    private TeamType nextTeam;
-
-    public TeamType team;
-
-
-   /* public override void OnStartLocalPlayer()
-    {
-        base.OnStartLocalPlayer();
-        team = ++nextTeam;
-        Debug.Log("initing motherbase...2324454");
-
-        GetLocalMotherbaseComponent().Init(team);
-    }*/
-
    public PlayerMotherbase GetLocalMotherbaseComponent()
     {
         foreach (GameObject cur in GameObject.FindGameObjectsWithTag("PlayerMotherbase"))
@@ -84,4 +62,4 @@ public class GameManager : MonoBehaviour
     }
 
 }
- 
+

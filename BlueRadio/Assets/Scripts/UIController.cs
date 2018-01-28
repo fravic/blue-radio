@@ -20,7 +20,7 @@ public class UIController : NetworkBehaviour {
 
   float gameStartTime;
 
-  
+
 
   public void Start() {
     aggressiveUnitBtn.onClick.AddListener(AddAggressiveUnit);
@@ -30,8 +30,6 @@ public class UIController : NetworkBehaviour {
     private void ManageIconGreyOut()
     {
         PlayerMotherbase motherbase = GameManager.Instance.GetLocalMotherbaseComponent();
-        if (!motherbase)
-            return;
         if (motherbase)
         {
             if (motherbase.money < PlayerMotherbase.AGGRESIVE_COST)
@@ -51,7 +49,7 @@ public class UIController : NetworkBehaviour {
 
   public void Update()
   {
-       //ManageIconGreyOut();
+        ManageIconGreyOut();
 
         // Update influence indicators
         int blueInf = GameManager.Instance.BlueInfluence;

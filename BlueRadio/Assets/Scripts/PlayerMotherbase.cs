@@ -21,16 +21,36 @@ public class PlayerMotherbase : NetworkBehaviour {
 
     private float timeSincePayday = 0.0f;
 
-    public void Init(GameManager.TeamType teamType)
+    public enum TeamType
+    {
+        ATANDTURF,
+        VERIZONE,
+        COUNT,
+    };
+
+   // [SyncVar]
+    private TeamType nextTeam;
+
+    public TeamType team;
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        team = ++nextTeam;
+
+        Init(team);
+    }
+
+    public void Init(TeamType teamType)
     {
         Debug.Log("initing motherbase...");
         switch (teamType)
         {
-            case GameManager.TeamType.ATANDTURF:
+            case TeamType.ATANDTURF:
                 Debug.Log("initing at&turf");
                 SphereRenderer.material.color = Color.blue;
                 break;
-            case GameManager.TeamType.VERIZONE:
+            case TeamType.VERIZONE:
                 Debug.Log("initing VERIZONE");
                 SphereRenderer.material.color = Color.red;
                 break;

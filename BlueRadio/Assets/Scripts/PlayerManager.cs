@@ -72,21 +72,9 @@ public class PlayerManager : Singleton<PlayerManager> {
 
     private void Deselect()
     {
-        if (Input.GetMouseButtonUp(0) && Time.time - leftButtonTime < 0.5f)
+        if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift))
         {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
-            bool noUnits = true;
-            for (int i = 0; i < hits.Length; i++)
-            {
-                if (hits[i].collider.tag == "Unit")
-                {
-                    noUnits = false;
-                }
-            }
-            if (noUnits) {
-                selectedUnits.Clear();
-            }
+            selectedUnits.Clear();
         }
     }
 
@@ -108,10 +96,10 @@ public class PlayerManager : Singleton<PlayerManager> {
 
     void Update()
     {
+        Deselect();
         MouseDownTimings();
         ClickToSelect();
         ClickToMove();
         TransformToTower();
-        Deselect();
     }
 }

@@ -45,6 +45,7 @@ public class PlayerManager : Singleton<PlayerManager> {
                 {
                     selectedUnits.Add(hit.collider.gameObject);
                     hit.collider.gameObject.GetComponent<UnitModeBehaviour>().selectedIndicator.SetActive(true);
+					FindObjectOfType<AudioManager>().Play("horn");
                 }
             }
         }

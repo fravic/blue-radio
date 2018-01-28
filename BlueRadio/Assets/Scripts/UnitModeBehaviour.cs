@@ -45,7 +45,7 @@ public class UnitModeBehaviour : MonoBehaviour
         {
             return;
         }
-
+		FindObjectOfType<AudioManager>().Play("antennae");
         if (currentMode == UnitMode.Van)
         {
             transform.rotation = Quaternion.FromToRotation(transform.up, Vector3.up) * transform.rotation;

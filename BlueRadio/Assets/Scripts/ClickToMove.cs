@@ -36,6 +36,7 @@ public class ClickToMove : MonoBehaviour
         Debug.Log("Unit move: " + name + " to: " + dest);
         DestroyIndicator();
         currentIndicator = GameObject.Instantiate(movingIndicator, dest, Quaternion.identity);
+		FindObjectOfType<AudioManager>().Play("click");
     }
 
     private void OnDestroy()

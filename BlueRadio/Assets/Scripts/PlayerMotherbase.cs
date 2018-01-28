@@ -19,6 +19,48 @@ public class PlayerMotherbase : NetworkBehaviour {
 
     public int money;
 
+    [Command]
+    private void CmdSpawnAggressiveUnit(GameObject clientGo)
+    {
+        var go = Instantiate(aggressiveUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
+        var agent = go.GetComponent<NavMeshAgent>();
+        agent.Warp(unitSpawnPoint.position);
+        agent.enabled = true;
+        agent.Warp(unitSpawnPoint.position);
+        //NetworkServer.SpawnWithClientAuthority(go, base.connectionToClient);
+        NetworkServer.SpawnWithClientAuthority(go, clientGo.GetComponent<NetworkIdentity>().connectionToClient);
+    }
+
+    public void SpawnAggressiveUnit()
+    {
+        if (money >= AGGRESIVE_COST)
+        {
+            money -= AGGRESIVE_COST;
+            CmdSpawnAggressiveUnit(gameObject);
+        }
+    }
+
+   [Command]
+    public void CmdSpawnConstructionUnit(GameObject clientGo)
+    {
+      var go = Instantiate(constructionUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
+      var agent = go.GetComponent<NavMeshAgent>();
+      agent.Warp(unitSpawnPoint.position);
+      agent.enabled = true;
+      agent.Warp(unitSpawnPoint.position);
+      NetworkServer.SpawnWithClientAuthority(go, clientGo.GetComponent<NetworkIdentity>().connectionToClient);
+      //NetworkServer.SpawnWithClientAuthority(go, base.connectionToClient);
+    }
+
+    public void SpawnConstructionUnit()
+    {
+        if (money >= CONSTRUCT_COST)
+        {
+            money -= CONSTRUCT_COST;
+            CmdSpawnConstructionUnit(gameObject);
+        }
+    }
+
     private float timeSincePayday = 0.0f;
 
     public enum TeamType
@@ -54,28 +96,6 @@ public class PlayerMotherbase : NetworkBehaviour {
                 Debug.Log("initing VERIZONE");
                 SphereRenderer.material.color = Color.red;
                 break;
-        }
-    }
-
-    public void SpawnAggressiveUnit() {
-        if (money >= AGGRESIVE_COST) {
-            money -= AGGRESIVE_COST;
-            var go = Instantiate(aggressiveUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
-            var agent = go.GetComponent<NavMeshAgent>();
-            agent.Warp(unitSpawnPoint.position);
-            agent.enabled = true;
-            agent.Warp(unitSpawnPoint.position);
-        }
-    }
-
-    public void SpawnConstructionUnit() {
-        if (money >= CONSTRUCT_COST) {
-            money -= CONSTRUCT_COST;
-            var go = Instantiate(constructionUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
-            var agent = go.GetComponent<NavMeshAgent>();
-            agent.Warp(unitSpawnPoint.position);
-            agent.enabled = true;
-            agent.Warp(unitSpawnPoint.position);
         }
     }
 

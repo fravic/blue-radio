@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 114719183049333694}
   - component: {fileID: 54136032312500414}
   - component: {fileID: 114280481555163778}
+  - component: {fileID: 114591097547604948}
   m_Layer: 0
   m_Name: BasicUnit
   m_TagString: Unit
@@ -620,6 +621,27 @@ MonoBehaviour:
     i15: 162
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114591097547604948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1529498478343638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.09090909
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 15
+  m_InterpolateMovement: 0.4
 --- !u!114 &114719183049333694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -634,6 +656,7 @@ MonoBehaviour:
   selectedIndicator: {fileID: 1770527362777156}
   RadioSphereCollider: {fileID: 135018551268314608}
   _isConnectedToMotherbase: 0
+  activatedHouses: []
   ConnectedIndicator: {fileID: 1297913773167008}
   currentMode: 0
   towerObj: {fileID: 1116569215720802}

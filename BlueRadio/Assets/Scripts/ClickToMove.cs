@@ -5,8 +5,9 @@ using UnityEngine;
 // MoveToClickPoint.cs
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Networking;
 
-public class ClickToMove : MonoBehaviour
+public class ClickToMove : NetworkBehaviour
 {
     [SerializeField] private GameObject movingIndicator;
     [SerializeField] private float speed;
@@ -16,6 +17,17 @@ public class ClickToMove : MonoBehaviour
 
 
     private GameObject currentIndicator;
+    private float creationTime;
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        var agent = GetComponent<NavMeshAgent>();
+        agent.Warp(transform.position);
+        agent.enabled = true;
+        agent.Warp(transform.position);
+        Debug.Log("Spawn unit " + name + " on client");
+    }
 
     void Start()
     {
@@ -23,20 +35,47 @@ public class ClickToMove : MonoBehaviour
 
         agent.speed = speed;
         agent.acceleration = acceleration;
+
+        agent.Warp(transform.position);
+        agent.enabled = true;
+        agent.Warp(transform.position);
+        Debug.Log("Spawn unit " + name + " on client");
+
     }
 
-    public void MoveTo(Vector3 dest)
+    [Command]
+    public void CmdMoveTo(Vector3 dest)
     {
         UnitModeBehaviour mb = GetComponent<UnitModeBehaviour>();
         // Can't move if not in Van mode
-        if (mb.currentMode == UnitModeBehaviour.UnitMode.Tower) {
+        if (mb.currentMode == UnitModeBehaviour.UnitMode.Tower)
+        {
             return;
         }
         agent.destination = dest;
         Debug.Log("Unit move: " + name + " to: " + dest);
         DestroyIndicator();
         currentIndicator = GameObject.Instantiate(movingIndicator, dest, Quaternion.identity);
+    }
+
+
+    public void MoveTo(Vector3 dest)
+    {
+        //CmdMoveTo(dest);
+
+        UnitModeBehaviour mb = GetComponent<UnitModeBehaviour>();
+        // Can't move if not in Van mode
+        if (mb.currentMode == UnitModeBehaviour.UnitMode.Tower)
+        {
+            return;
+        }
+        agent.destination = dest;
+        Debug.Log("Unit move: " + name + " to: " + dest);
+        DestroyIndicator();
+        Debug.Log(agent.remainingDistance);
+        currentIndicator = GameObject.Instantiate(movingIndicator, dest, Quaternion.identity);
 		FindObjectOfType<AudioManager>().Play("click");
+        creationTime = Time.time;
     }
 
     private void OnDestroy()
@@ -75,7 +114,7 @@ public class ClickToMove : MonoBehaviour
             float dist = agent.remainingDistance;
             if (dist != Mathf.Infinity &&
                 agent.pathStatus == NavMeshPathStatus.PathComplete &&
-                agent.remainingDistance == 0) //Arrived
+                agent.remainingDistance == 0 && Time.time - creationTime > 0.1) //Arrived
             {
                 DestroyIndicator();
             }

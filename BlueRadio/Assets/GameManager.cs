@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : NetworkBehaviour
+{
 
     public static GameManager Instance;
     public int BlueInfluence;
@@ -10,12 +13,12 @@ public class GameManager : MonoBehaviour {
 
     public List<HouseObject> housesList;
 
-    void Start ()
+    void Start()
     {
         Instance = this;
         BlueInfluence = 0;
         RedInfluence = 0;
-	}
+    }
 
     void Update()
     {
@@ -34,4 +37,22 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public enum TeamType
+    {
+        ATANDTURF,
+        VERIZONE,
+        COUNT,
+    };
+
+    [SyncVar]
+    private TeamType nextTeam;
+
+    public TeamType team;
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        team = ++nextTeam;
+    }
 }
+ 

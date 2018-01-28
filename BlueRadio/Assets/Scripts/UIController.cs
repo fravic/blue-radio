@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class UIController : MonoBehaviour {
+public class UIController : NetworkBehaviour {
 
   const float GAME_TIME = 60 * 3;
 
@@ -19,6 +20,15 @@ public class UIController : MonoBehaviour {
 
   float gameStartTime;
 
+  PlayerMotherbase GetLocalMotherbaseComponent() {
+    foreach(GameObject cur in GameObject.FindGameObjectsWithTag("PlayerMotherbase")) {
+      if (cur.GetComponent<NetworkIdentity>() && cur.GetComponent<NetworkIdentity>().isLocalPlayer) {
+        return cur.GetComponent<PlayerMotherbase>();
+      }
+    }
+    return null;
+  }
+
   public void Start() {
     aggressiveUnitBtn.onClick.AddListener(AddAggressiveUnit);
     constructionUnitBtn.onClick.AddListener(AddConstructionUnit);
@@ -26,13 +36,16 @@ public class UIController : MonoBehaviour {
 
   public void Update() {
     // Only enable buttons if we have enough money
-    if (PlayerManager.Instance.money < PlayerManager.UNIT_COST) {
-      aggressiveUnitBtn.interactable = false;
-      constructionUnitBtn.interactable = false;
-    }
+    PlayerMotherbase motherbase = GetLocalMotherbaseComponent();
+    if (motherbase) {
+      if (motherbase.money < PlayerMotherbase.UNIT_COST) {
+        aggressiveUnitBtn.interactable = false;
+        constructionUnitBtn.interactable = false;
+      }
 
-    // Update money indicator
-    moneyLabel.text = "$" + PlayerManager.Instance.money;
+      // Update money indicator
+      moneyLabel.text = "$" + motherbase.money;
+    }
 
     // Update influence indicators
     int blueInf = GameManager.Instance.BlueInfluence;
@@ -53,10 +66,12 @@ public class UIController : MonoBehaviour {
   }
 
   private void AddAggressiveUnit() {
-    PlayerManager.Instance.SpawnAggressiveUnit();
+    PlayerMotherbase motherbase = GetLocalMotherbaseComponent();
+    motherbase.SpawnAggressiveUnit();
   }
 
   private void AddConstructionUnit() {
-    PlayerManager.Instance.SpawnConstructionUnit();
+    PlayerMotherbase motherbase = GetLocalMotherbaseComponent();
+    motherbase.SpawnConstructionUnit();
   }
 }

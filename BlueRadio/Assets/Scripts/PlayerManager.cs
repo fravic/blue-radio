@@ -7,45 +7,12 @@ public class PlayerManager : Singleton<PlayerManager> {
 
     [SerializeField] private GameObject selectedUnitIcon;
 
-    public Transform unitSpawnPoint;
-
-    public GameObject aggressiveUnitPrefab;
-    public GameObject constructionUnitPrefab;
-
-    public const int UNIT_COST = 200;
-
-    public int money;
-
     private List<GameObject> selectedUnits = new List<GameObject>();
 
     private float leftButtonTime;
 
-    private float timeSincePayday = 0.0f;
-
     public void Start() {
         //selectedUnits.Add(new GameObject());
-    }
-
-    public void SpawnAggressiveUnit() {
-        if (money >= UNIT_COST) {
-            money -= UNIT_COST;
-            var go = Instantiate(aggressiveUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
-            var agent = go.GetComponent<NavMeshAgent>();
-            agent.Warp(unitSpawnPoint.position);
-            agent.enabled = true;
-            agent.Warp(unitSpawnPoint.position);
-        }
-    }
-
-    public void SpawnConstructionUnit() {
-        if (money >= UNIT_COST) {
-            money -= UNIT_COST;
-            var go = Instantiate(constructionUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
-            var agent = go.GetComponent<NavMeshAgent>();
-            agent.Warp(unitSpawnPoint.position);
-            agent.enabled = true;
-            agent.Warp(unitSpawnPoint.position);
-        }
     }
 
     private void ClickToMove()
@@ -117,16 +84,6 @@ public class PlayerManager : Singleton<PlayerManager> {
         }
     }
 
-    private void AddMoney()
-    {
-        if (Time.time - timeSincePayday > 1)
-        {
-            money += 10;
-            timeSincePayday = Mathf.Round(Time.time);
-        }
-    }
-
-
     void Update()
     {
         Deselect();
@@ -134,6 +91,5 @@ public class PlayerManager : Singleton<PlayerManager> {
         ClickToSelect();
         ClickToMove();
         TransformToTower();
-        AddMoney();
     }
 }

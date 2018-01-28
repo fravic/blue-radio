@@ -20,24 +20,16 @@ public class UIController : NetworkBehaviour {
 
   float gameStartTime;
 
-  PlayerMotherbase GetLocalMotherbaseComponent() {
-    foreach(GameObject cur in GameObject.FindGameObjectsWithTag("PlayerMotherbase")) {
-      if (cur.GetComponentInParent<NetworkIdentity>() && cur.GetComponentInParent<NetworkIdentity>().isLocalPlayer) {
-        return cur.GetComponentInParent<PlayerMotherbase>();
-      }
-    }
-    return null;
-  }
+
 
   public void Start() {
     aggressiveUnitBtn.onClick.AddListener(AddAggressiveUnit);
     constructionUnitBtn.onClick.AddListener(AddConstructionUnit);
   }
 
-   private void ManageIconGreyOut()
-   {
-        PlayerMotherbase motherbase = GetLocalMotherbaseComponent();
-
+    private void ManageIconGreyOut()
+    {
+        PlayerMotherbase motherbase = GameManager.Instance.GetLocalMotherbaseComponent();
         if (motherbase)
         {
             if (motherbase.money < PlayerMotherbase.AGGRESIVE_COST)
@@ -53,11 +45,11 @@ public class UIController : NetworkBehaviour {
             // Update money indicator
             moneyLabel.text = "$" + motherbase.money;
         }
-   }
+    }
 
   public void Update()
   {
-       ManageIconGreyOut();
+        ManageIconGreyOut();
 
         // Update influence indicators
         int blueInf = GameManager.Instance.BlueInfluence;
@@ -78,12 +70,12 @@ public class UIController : NetworkBehaviour {
   }
 
   private void AddAggressiveUnit() {
-    PlayerMotherbase motherbase = GetLocalMotherbaseComponent();
+    PlayerMotherbase motherbase = GameManager.Instance.GetLocalMotherbaseComponent();
     motherbase.SpawnAggressiveUnit();
   }
 
   private void AddConstructionUnit() {
-    PlayerMotherbase motherbase = GetLocalMotherbaseComponent();
+    PlayerMotherbase motherbase = GameManager.Instance.GetLocalMotherbaseComponent();
     motherbase.SpawnConstructionUnit();
   }
 }

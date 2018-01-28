@@ -1,0 +1,6 @@
+These sounds can be used for the player's trucks colliding
+	- with each other
+	- with houses
+	- with the environment
+	- ???
+	- profit

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44659346, g: 0.49643093, b: 0.57482666, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657725, g: 0.49641377, b: 0.57481784, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -685,6 +685,52 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1433758392}
   m_Script: {fileID: 11500000, guid: e3d6ee493437ec5409be0370de2be5b1, type: 3}
+--- !u!1 &521066028 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1374778000598534, guid: 1a3c596c87cc78942a4cf5deeb987df3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1433758392}
+--- !u!114 &521066029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521066028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 910771039, guid: f56d46228aee4734f9114056c53bb57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfacevecs: []
+  tdataFloat: []
+  terrainData: {fileID: 0}
+  xStart: 0
+  zStart: 0
+  roadSurface: {fileID: 0}
+  surfaceMesh: {fileID: 0}
+  surfaceCollider: {fileID: 0}
+  terrainDataStored: []
+  terrainChanges: []
+  terrainTrees: []
+  detailInstances: []
+  detailInstanceStarts: 
+  surfaceObjects: []
+  terrainTestPoints: []
+  splatData: []
+  addedTrees: []
+  terrainHeightsBackup: []
+  terrainTreesBackup: []
+  terrainDetailBackup: []
+  terrainSplatBackup: []
+  detailInstanceStartsBackUp: 
+  heightmapFlag: 0
+  splatmapFlag: 0
+  treeFlag: 0
+  detailFlag: 0
+  terrainDone: 0
+  backupFlagNotification: 0
+  backupObject: {fileID: 0}
+  terrain: {fileID: 0}
 --- !u!114 &538267389 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114614113786438172, guid: 1a3c596c87cc78942a4cf5deeb987df3,
@@ -1561,6 +1607,7 @@ GameObject:
   - component: {fileID: 1772404070}
   - component: {fileID: 1772404074}
   - component: {fileID: 1772404075}
+  - component: {fileID: 1772404076}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1658,6 +1705,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollingSpeed: 15
+--- !u!114 &1772404076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1772404069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: b72b820c6efdc3b4aa41dfb3f484a1df, type: 2}
 --- !u!1 &1773201987
 GameObject:
   m_ObjectHideFlags: 0

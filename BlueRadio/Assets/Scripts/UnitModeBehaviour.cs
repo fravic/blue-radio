@@ -9,6 +9,8 @@ public class UnitModeBehaviour : MonoBehaviour
     public GameObject selectedIndicator;
     public SphereCollider RadioSphereCollider;
 
+    //public PlayerMotherbase.TeamType teamType;
+
     public bool _isConnectedToMotherbase;
     public bool IsConnectedToMotherbase { get { return _isConnectedToMotherbase; }
       set { _isConnectedToMotherbase = value;
@@ -39,7 +41,7 @@ public class UnitModeBehaviour : MonoBehaviour
 
 
     // Changes the unit mode from Tower to Van, or vice versa
-    public void Toggle()
+    public void Toggle(bool isBeforeDeath = false)
     {
         if (currentMode == UnitMode.Tank)
         {
@@ -60,6 +62,11 @@ public class UnitModeBehaviour : MonoBehaviour
 
             StartCoroutine(EnableTowerCr(0.75f));
         }
+        if (currentMode == UnitMode.Tower && isBeforeDeath)
+        {
+            towerObj.GetComponent<Animator>().SetBool("isShrunk", true);
+            StartCoroutine(EnableVanCr(0.5f));
+        }
 #if false
         else
         {
@@ -74,7 +81,9 @@ public class UnitModeBehaviour : MonoBehaviour
 
     public void DisconnectAllHouses()
     {
+        Debug.Log("### disconnectng all houses...");
         IsConnectedToMotherbase = false;
+        Toggle(true);
         foreach (HouseObject house in activatedHouses)
         {
             house.DisconnectHouse();

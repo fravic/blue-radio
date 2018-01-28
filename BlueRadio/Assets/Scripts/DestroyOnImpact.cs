@@ -19,8 +19,8 @@ public class DestroyOnImpact : NetworkBehaviour {
 
     private IEnumerator DestroyNextFrame(GameObject go)
     {
-        go.SetActive(false);
-        yield return null;
+        //go.SetActive(false);
+        yield return new WaitForSeconds(1f);
         NetworkManager.Destroy(go);
     }
 }

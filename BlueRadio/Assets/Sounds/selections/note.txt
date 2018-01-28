@@ -1,0 +1,4 @@
+These sounds can be used when the player clicks on the various UI features.
+ - "honk" can be used for selecting a truck
+ - Other sound effects could be used for confirmation when commands are given
+ (play a sound when clicking on the field to move a truck)

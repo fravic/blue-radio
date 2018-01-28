@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GameManager : NetworkBehaviour
+public class GameManager : MonoBehaviour
 {
 
     public static GameManager Instance;
@@ -37,22 +37,29 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-    public enum TeamType
+   public PlayerMotherbase GetLocalMotherbaseComponent()
     {
-        ATANDTURF,
-        VERIZONE,
-        COUNT,
-    };
-
-    [SyncVar]
-    private TeamType nextTeam;
-
-    public TeamType team;
-
-    public override void OnStartLocalPlayer()
-    {
-        base.OnStartLocalPlayer();
-        team = ++nextTeam;
+        foreach (GameObject cur in GameObject.FindGameObjectsWithTag("PlayerMotherbase"))
+        {
+            if (cur.GetComponentInParent<NetworkIdentity>() && cur.GetComponentInParent<NetworkIdentity>().isLocalPlayer)
+            {
+                return cur.GetComponentInParent<PlayerMotherbase>();
+            }
+        }
+        return null;
     }
+
+    public PlayerMotherbase GetOpponentMotherbaseComponent()
+    {
+        foreach (GameObject cur in GameObject.FindGameObjectsWithTag("PlayerMotherbase"))
+        {
+            if (cur.GetComponentInParent<NetworkIdentity>() && !cur.GetComponentInParent<NetworkIdentity>().isLocalPlayer)
+            {
+                return cur.GetComponentInParent<PlayerMotherbase>();
+            }
+        }
+        return null;
+    }
+
 }
- 
+

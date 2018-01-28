@@ -24,6 +24,11 @@ public class HouseObject : MonoBehaviour
                 influenceIndicator.SetActive(true);
                 influenceIndicator.GetComponent<Renderer>().material.color = Color.blue;
             }
+            else
+            {
+                influence = 0;
+                influenceIndicator.SetActive(false);
+            }
         }
         else if (other.gameObject.tag == "EnemySphere")
         {
@@ -33,10 +38,21 @@ public class HouseObject : MonoBehaviour
                 influenceIndicator.SetActive(true);
                 influenceIndicator.GetComponent<Renderer>().material.color = Color.red;
             }
+            else
+            {
+                influence = 0;
+                influenceIndicator.SetActive(false);
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
+    {
+        func(other);
+    }
+
+
+    public void func(Collider other)
     {
         if (other.gameObject.tag == "PlayerSphere" || other.gameObject.tag == "EnemySphere")
         {

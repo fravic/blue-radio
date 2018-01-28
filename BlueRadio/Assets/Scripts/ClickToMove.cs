@@ -16,6 +16,7 @@ public class ClickToMove : MonoBehaviour
 
 
     private GameObject currentIndicator;
+    private float creationTime;
 
     void Start()
     {
@@ -35,7 +36,9 @@ public class ClickToMove : MonoBehaviour
         agent.destination = dest;
         Debug.Log("Unit move: " + name + " to: " + dest);
         DestroyIndicator();
+        Debug.Log(agent.remainingDistance);
         currentIndicator = GameObject.Instantiate(movingIndicator, dest, Quaternion.identity);
+        creationTime = Time.time;
     }
 
     private void OnDestroy()
@@ -74,7 +77,7 @@ public class ClickToMove : MonoBehaviour
             float dist = agent.remainingDistance;
             if (dist != Mathf.Infinity &&
                 agent.pathStatus == NavMeshPathStatus.PathComplete &&
-                agent.remainingDistance == 0) //Arrived
+                agent.remainingDistance == 0 && Time.time - creationTime > 0.1) //Arrived
             {
                 DestroyIndicator();
             }

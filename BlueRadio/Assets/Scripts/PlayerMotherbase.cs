@@ -28,7 +28,7 @@ public class PlayerMotherbase : NetworkBehaviour {
         COUNT,
     };
 
-   // [SyncVar]
+    [SyncVar]
     private TeamType nextTeam;
 
     public TeamType team;

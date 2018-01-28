@@ -6,59 +6,74 @@ using UnityEngine.AI;
 
 public class PlayerMotherbase : MonoBehaviour {
 
-  public Transform unitSpawnPoint;
+    public Transform unitSpawnPoint;
 
-  public GameObject aggressiveUnitPrefab;
-  public GameObject constructionUnitPrefab;
+    public GameObject aggressiveUnitPrefab;
+    public GameObject constructionUnitPrefab;
 
-  public const int CONSTRUCT_COST = 200;
-  public const int AGGRESIVE_COST = 400;
+    public Renderer SphereRenderer;
 
-  public int money;
+    public const int CONSTRUCT_COST = 200;
+    public const int AGGRESIVE_COST = 400;
 
-  private float timeSincePayday = 0.0f;
+    public int money;
 
-  public void SpawnAggressiveUnit() {
-    if (money >= AGGRESIVE_COST) {
-      money -= AGGRESIVE_COST;
-      var go = Instantiate(aggressiveUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
-      var agent = go.GetComponent<NavMeshAgent>();
-      agent.Warp(unitSpawnPoint.position);
-      agent.enabled = true;
-      agent.Warp(unitSpawnPoint.position);
+    private float timeSincePayday = 0.0f;
+
+    public void Init(GameManager.TeamType teamType)
+    {
+        switch (teamType)
+        {
+            case GameManager.TeamType.ATANDTURF:
+                SphereRenderer.material.color = Color.blue;
+                break;
+            case GameManager.TeamType.VERIZONE:
+                SphereRenderer.material.color = Color.red;
+                break;
+        }
     }
-  }
 
-  public void SpawnConstructionUnit() {
-    if (money >= CONSTRUCT_COST) {
-      money -= CONSTRUCT_COST;
-      var go = Instantiate(constructionUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
-      var agent = go.GetComponent<NavMeshAgent>();
-      agent.Warp(unitSpawnPoint.position);
-      agent.enabled = true;
-      agent.Warp(unitSpawnPoint.position);
+    public void SpawnAggressiveUnit() {
+        if (money >= AGGRESIVE_COST) {
+            money -= AGGRESIVE_COST;
+            var go = Instantiate(aggressiveUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
+            var agent = go.GetComponent<NavMeshAgent>();
+            agent.Warp(unitSpawnPoint.position);
+            agent.enabled = true;
+            agent.Warp(unitSpawnPoint.position);
+        }
     }
-  }
 
-  private void AddMoney()
-  {
-      if (Time.time - timeSincePayday > 1)
-      {
-          money += 10;
-          timeSincePayday = Mathf.Round(Time.time);
-      }
-  }
+    public void SpawnConstructionUnit() {
+        if (money >= CONSTRUCT_COST) {
+            money -= CONSTRUCT_COST;
+            var go = Instantiate(constructionUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
+            var agent = go.GetComponent<NavMeshAgent>();
+            agent.Warp(unitSpawnPoint.position);
+            agent.enabled = true;
+            agent.Warp(unitSpawnPoint.position);
+        }
+    }
+
+    private void AddMoney()
+    {
+        if (Time.time - timeSincePayday > 1)
+        {
+            money += 10;
+            timeSincePayday = Mathf.Round(Time.time);
+        }
+    }
 
 
 
-  // Use this for initialization
-  void Start () {
+    // Use this for initialization
+    void Start() {
         Camera.main.transform.position = new Vector3(unitSpawnPoint.transform.position.x,
             Camera.main.transform.position.y, unitSpawnPoint.transform.position.z - 70);
-  }
+    }
 
-  // Update is called once per frame
-  void Update () {
-    AddMoney();
-  }
+    // Update is called once per frame
+    void Update() {
+        AddMoney();
+    }
 }

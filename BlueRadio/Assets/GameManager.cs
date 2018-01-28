@@ -53,6 +53,32 @@ public class GameManager : NetworkBehaviour
     {
         base.OnStartLocalPlayer();
         team = ++nextTeam;
+        //Init()
     }
+
+   public PlayerMotherbase GetLocalMotherbaseComponent()
+    {
+        foreach (GameObject cur in GameObject.FindGameObjectsWithTag("PlayerMotherbase"))
+        {
+            if (cur.GetComponentInParent<NetworkIdentity>() && cur.GetComponentInParent<NetworkIdentity>().isLocalPlayer)
+            {
+                return cur.GetComponentInParent<PlayerMotherbase>();
+            }
+        }
+        return null;
+    }
+
+    public PlayerMotherbase GetOpponentMotherbaseComponent()
+    {
+        foreach (GameObject cur in GameObject.FindGameObjectsWithTag("PlayerMotherbase"))
+        {
+            if (cur.GetComponentInParent<NetworkIdentity>() && !cur.GetComponentInParent<NetworkIdentity>().isLocalPlayer)
+            {
+                return cur.GetComponentInParent<PlayerMotherbase>();
+            }
+        }
+        return null;
+    }
+
 }
  

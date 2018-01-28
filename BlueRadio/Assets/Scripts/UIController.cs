@@ -20,14 +20,7 @@ public class UIController : NetworkBehaviour {
 
   float gameStartTime;
 
-  PlayerMotherbase GetLocalMotherbaseComponent() {
-    foreach(GameObject cur in GameObject.FindGameObjectsWithTag("PlayerMotherbase")) {
-      if (cur.GetComponentInParent<NetworkIdentity>() && cur.GetComponentInParent<NetworkIdentity>().isLocalPlayer) {
-        return cur.GetComponentInParent<PlayerMotherbase>();
-      }
-    }
-    return null;
-  }
+  
 
   public void Start() {
     aggressiveUnitBtn.onClick.AddListener(AddAggressiveUnit);
@@ -36,7 +29,7 @@ public class UIController : NetworkBehaviour {
 
    private void ManageIconGreyOut()
    {
-        PlayerMotherbase motherbase = GetLocalMotherbaseComponent();
+        PlayerMotherbase motherbase = GameManager.Instance.GetLocalMotherbaseComponent();
 
         if (motherbase)
         {
@@ -78,12 +71,12 @@ public class UIController : NetworkBehaviour {
   }
 
   private void AddAggressiveUnit() {
-    PlayerMotherbase motherbase = GetLocalMotherbaseComponent();
+    PlayerMotherbase motherbase = GameManager.Instance.GetLocalMotherbaseComponent();
     motherbase.SpawnAggressiveUnit();
   }
 
   private void AddConstructionUnit() {
-    PlayerMotherbase motherbase = GetLocalMotherbaseComponent();
+    PlayerMotherbase motherbase = GameManager.Instance.GetLocalMotherbaseComponent();
     motherbase.SpawnConstructionUnit();
   }
 }

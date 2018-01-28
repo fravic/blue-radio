@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class PlayerManager : Singleton<PlayerManager> {
 
+    [SerializeField] private GameObject selectedUnitIcon;
+
     public GameObject aggressiveUnitPrefab;
     public GameObject constructionUnitPrefab;
 
@@ -15,6 +17,8 @@ public class PlayerManager : Singleton<PlayerManager> {
     private List<GameObject> selectedUnits = new List<GameObject>();
 
     private float leftButtonTime;
+
+    private float timeSincePayday = 0.0f;
 
     public void Start() {
         //selectedUnits.Add(new GameObject());
@@ -58,7 +62,11 @@ public class PlayerManager : Singleton<PlayerManager> {
                 if (hit.collider.tag == "Unit")
                 {
                     selectedUnits.Add(hit.collider.gameObject);
+<<<<<<< HEAD
+                    hit.collider.gameObject.GetComponent<UnitModeBehaviour>().selectedIndicator.SetActive(true);
+=======
                     Debug.Log("Unit selected: " + hit.collider.gameObject);
+>>>>>>> 49f388e77bc709448cc0d14bdbf46893bb82015a
                 }
             }
         }
@@ -74,6 +82,10 @@ public class PlayerManager : Singleton<PlayerManager> {
     {
         if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift))
         {
+            foreach (var unit in selectedUnits)
+            {
+                unit.GetComponent<UnitModeBehaviour>().selectedIndicator.SetActive(false);
+            }
             selectedUnits.Clear();
         }
     }
@@ -94,6 +106,16 @@ public class PlayerManager : Singleton<PlayerManager> {
         }
     }
 
+    private void AddMoney()
+    {
+        if (Time.time - timeSincePayday > 1)
+        {
+            money += 10;
+            timeSincePayday = Mathf.Round(Time.time);
+        }
+    }
+
+
     void Update()
     {
         Deselect();
@@ -101,5 +123,6 @@ public class PlayerManager : Singleton<PlayerManager> {
         ClickToSelect();
         ClickToMove();
         TransformToTower();
+        AddMoney();
     }
 }

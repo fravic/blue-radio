@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class UnitModeBehaviour : MonoBehaviour
 {
+    public GameObject selectedIndicator;
 
     //public SphereCollider RadioSphereCollider;
     public bool _isConnectedToMotherbase;

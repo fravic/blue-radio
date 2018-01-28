@@ -42,17 +42,11 @@ public class PlayerManager : Singleton<PlayerManager> {
     {
         if (Input.GetMouseButtonDown(1))
         {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
-            for (int i = 0; i < hits.Length; i++)
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000))
             {
-                if (hits[i].collider.tag == "Terrain")
-                {
-                    foreach (var unit in selectedUnits)
-                    {
-                        unit.GetComponent<ClickToMove>().MoveTo(hits[i].point);
-                    }
-                }
+                foreach(var unit in selectedUnits)
+                    unit.GetComponent<ClickToMove>().MoveTo(hit.point);
             }
         }
     }
@@ -61,19 +55,28 @@ public class PlayerManager : Singleton<PlayerManager> {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
-            for (int i = 0; i < hits.Length; i++)
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000))
             {
-                RaycastHit hit = hits[i];
                 if (hit.collider.tag == "Unit")
                 {
                     selectedUnits.Add(hit.collider.gameObject);
+<<<<<<< HEAD
                     hit.collider.gameObject.GetComponent<UnitModeBehaviour>().selectedIndicator.SetActive(true);
+=======
+                    Debug.Log("Unit selected: " + hit.collider.gameObject);
+>>>>>>> 49f388e77bc709448cc0d14bdbf46893bb82015a
                 }
             }
         }
     }
+
+    public void Deselect(GameObject go)
+    {
+        selectedUnits.Remove(go);
+    }
+
 
     private void Deselect()
     {
@@ -90,7 +93,7 @@ public class PlayerManager : Singleton<PlayerManager> {
 
     private void MouseDownTimings()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
             leftButtonTime = Time.time;
     }
 

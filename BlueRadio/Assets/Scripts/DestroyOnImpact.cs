@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DestroyOnImpact : MonoBehaviour {
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(name + " Collided with " + collision.gameObject.name);
+        Debug.Log(name + " Collided with " + other.name);
         /// TODO: add a check for other player
-        if (collision.collider.tag == "Unit")
+        if (other.tag == "Unit")
         {
-            Destroy(collision.collider.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

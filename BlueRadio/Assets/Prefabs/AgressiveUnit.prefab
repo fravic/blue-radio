@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114136963282018036}
   - component: {fileID: 114957804472670946}
   - component: {fileID: 54513926316919714}
+  - component: {fileID: 114091442052262206}
   m_Layer: 0
   m_Name: AgressiveUnit
   m_TagString: Unit
@@ -306,6 +307,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114091442052262206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1529498478343638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 157
+    i1: 191
+    i2: 195
+    i3: 211
+    i4: 200
+    i5: 160
+    i6: 13
+    i7: 52
+    i8: 235
+    i9: 74
+    i10: 122
+    i11: 143
+    i12: 38
+    i13: 96
+    i14: 180
+    i15: 83
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114136963282018036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,7 +389,7 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1529498478343638}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 20

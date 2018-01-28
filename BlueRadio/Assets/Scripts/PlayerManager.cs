@@ -7,6 +7,8 @@ public class PlayerManager : Singleton<PlayerManager> {
 
     [SerializeField] private GameObject selectedUnitIcon;
 
+    public Transform unitSpawnPoint;
+
     public GameObject aggressiveUnitPrefab;
     public GameObject constructionUnitPrefab;
 
@@ -27,14 +29,22 @@ public class PlayerManager : Singleton<PlayerManager> {
     public void SpawnAggressiveUnit() {
         if (money >= UNIT_COST) {
             money -= UNIT_COST;
-            Instantiate(aggressiveUnitPrefab);
+            var go = Instantiate(aggressiveUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
+            var agent = go.GetComponent<NavMeshAgent>();
+            agent.Warp(unitSpawnPoint.position);
+            agent.enabled = true;
+            agent.Warp(unitSpawnPoint.position);
         }
     }
 
     public void SpawnConstructionUnit() {
         if (money >= UNIT_COST) {
             money -= UNIT_COST;
-            Instantiate(constructionUnitPrefab);
+            var go = Instantiate(constructionUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
+            var agent = go.GetComponent<NavMeshAgent>();
+            agent.Warp(unitSpawnPoint.position);
+            agent.enabled = true;
+            agent.Warp(unitSpawnPoint.position);
         }
     }
 

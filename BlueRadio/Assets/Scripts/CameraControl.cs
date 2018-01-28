@@ -67,6 +67,6 @@ public class CameraControl : MonoBehaviour {
         transform.position += scrollingSpeed * new Vector3(x, 0.0f, z);
         if (togglePan)
             TrySidePan();
-        CapCameraPos();
+//        CapCameraPos();
     }
 }

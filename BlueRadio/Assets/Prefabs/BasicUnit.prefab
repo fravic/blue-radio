@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 195612055506740074}
   - component: {fileID: 114719183049333694}
   - component: {fileID: 54136032312500414}
+  - component: {fileID: 114280481555163778}
   m_Layer: 0
   m_Name: BasicUnit
   m_TagString: Unit
@@ -587,6 +588,38 @@ MonoBehaviour:
   materialIndex: 0
   uvAnimationRate: {x: 0, y: 0.1}
   textureName: _MainTex
+--- !u!114 &114280481555163778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1529498478343638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 127
+    i1: 115
+    i2: 239
+    i3: 36
+    i4: 120
+    i5: 78
+    i6: 143
+    i7: 68
+    i8: 153
+    i9: 235
+    i10: 225
+    i11: 144
+    i12: 33
+    i13: 112
+    i14: 12
+    i15: 162
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114719183049333694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -649,7 +682,7 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1529498478343638}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 20

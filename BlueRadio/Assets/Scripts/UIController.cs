@@ -22,8 +22,8 @@ public class UIController : NetworkBehaviour {
 
   PlayerMotherbase GetLocalMotherbaseComponent() {
     foreach(GameObject cur in GameObject.FindGameObjectsWithTag("PlayerMotherbase")) {
-      if (cur.GetComponent<NetworkIdentity>() && cur.GetComponent<NetworkIdentity>().isLocalPlayer) {
-        return cur.GetComponent<PlayerMotherbase>();
+      if (cur.GetComponentInParent<NetworkIdentity>() && cur.GetComponentInParent<NetworkIdentity>().isLocalPlayer) {
+        return cur.GetComponentInParent<PlayerMotherbase>();
       }
     }
     return null;
@@ -58,7 +58,7 @@ public class UIController : NetworkBehaviour {
   public void Update()
   {
        ManageIconGreyOut();
- 
+
         // Update influence indicators
         int blueInf = GameManager.Instance.BlueInfluence;
         int redInf = GameManager.Instance.RedInfluence;

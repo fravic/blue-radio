@@ -39,7 +39,9 @@ public class ClickToMove : MonoBehaviour
     }
 
     public void StopMovement() {
-        agent.isStopped = true;
+        if (agent.isActiveAndEnabled) {
+            agent.isStopped = true;
+        }
         DestroyIndicator();
     }
 
@@ -61,12 +63,14 @@ public class ClickToMove : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
         }
 
-        float dist = agent.remainingDistance;
-        if (dist != Mathf.Infinity &&
-            agent.pathStatus == NavMeshPathStatus.PathComplete &&
-            agent.remainingDistance == 0) //Arrived
-        {
-            DestroyIndicator();
+        if (agent.isActiveAndEnabled) {
+            float dist = agent.remainingDistance;
+            if (dist != Mathf.Infinity &&
+                agent.pathStatus == NavMeshPathStatus.PathComplete &&
+                agent.remainingDistance == 0) //Arrived
+            {
+                DestroyIndicator();
+            }
         }
     }
 }

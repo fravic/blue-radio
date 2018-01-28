@@ -53,7 +53,8 @@ public class PlayerMotherbase : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
-
+        Camera.main.transform.position = new Vector3(unitSpawnPoint.transform.position.x,
+            Camera.main.transform.position.y, unitSpawnPoint.transform.position.z - 70);
   }
 
   // Update is called once per frame

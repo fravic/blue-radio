@@ -38,17 +38,11 @@ public class PlayerManager : Singleton<PlayerManager> {
     {
         if (Input.GetMouseButtonDown(1))
         {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
-            for (int i = 0; i < hits.Length; i++)
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000))
             {
-                if (hits[i].collider.tag == "Terrain")
-                {
-                    foreach (var unit in selectedUnits)
-                    {
-                        unit.GetComponent<ClickToMove>().MoveTo(hits[i].point);
-                    }
-                }
+                foreach(var unit in selectedUnits)
+                    unit.GetComponent<ClickToMove>().MoveTo(hit.point);
             }
         }
     }
@@ -57,43 +51,37 @@ public class PlayerManager : Singleton<PlayerManager> {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
-            for (int i = 0; i < hits.Length; i++)
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000))
             {
-                RaycastHit hit = hits[i];
                 if (hit.collider.tag == "Unit")
                 {
                     selectedUnits.Add(hit.collider.gameObject);
+                    Debug.Log("Unit selected: " + hit.collider.gameObject);
                 }
             }
         }
     }
 
+    public void Deselect(GameObject go)
+    {
+        selectedUnits.Remove(go);
+    }
+
+
     private void Deselect()
     {
-        if (Input.GetMouseButtonUp(0) && Time.time - leftButtonTime < 0.5f)
+        if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift))
         {
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
-            bool noUnits = true;
-            for (int i = 0; i < hits.Length; i++)
-            {
-                if (hits[i].collider.tag == "Unit")
-                {
-                    noUnits = false;
-                }
-            }
-            if (noUnits) {
-                selectedUnits.Clear();
-            }
+            selectedUnits.Clear();
         }
     }
 
 
     private void MouseDownTimings()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
             leftButtonTime = Time.time;
     }
 
@@ -108,10 +96,10 @@ public class PlayerManager : Singleton<PlayerManager> {
 
     void Update()
     {
+        Deselect();
         MouseDownTimings();
         ClickToSelect();
         ClickToMove();
         TransformToTower();
-        Deselect();
     }
 }

@@ -868,7 +868,7 @@ MonoBehaviour:
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: horn
@@ -1738,9 +1738,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollingSpeed: 1
-  panningSpeed: 15
+  panningSpeed: 50
   panBorder: 20
-  togglePan: 0
+  togglePan: 1
 --- !u!114 &1772404075
 MonoBehaviour:
   m_ObjectHideFlags: 0

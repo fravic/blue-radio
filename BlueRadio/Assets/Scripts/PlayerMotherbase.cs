@@ -11,15 +11,16 @@ public class PlayerMotherbase : MonoBehaviour {
   public GameObject aggressiveUnitPrefab;
   public GameObject constructionUnitPrefab;
 
-  public const int UNIT_COST = 200;
+  public const int CONSTRUCT_COST = 200;
+  public const int AGGRESIVE_COST = 400;
 
   public int money;
 
   private float timeSincePayday = 0.0f;
 
   public void SpawnAggressiveUnit() {
-    if (money >= UNIT_COST) {
-      money -= UNIT_COST;
+    if (money >= AGGRESIVE_COST) {
+      money -= AGGRESIVE_COST;
       var go = Instantiate(aggressiveUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
       var agent = go.GetComponent<NavMeshAgent>();
       agent.Warp(unitSpawnPoint.position);
@@ -29,8 +30,8 @@ public class PlayerMotherbase : MonoBehaviour {
   }
 
   public void SpawnConstructionUnit() {
-    if (money >= UNIT_COST) {
-      money -= UNIT_COST;
+    if (money >= CONSTRUCT_COST) {
+      money -= CONSTRUCT_COST;
       var go = Instantiate(constructionUnitPrefab, position: unitSpawnPoint.position, rotation: unitSpawnPoint.rotation);
       var agent = go.GetComponent<NavMeshAgent>();
       agent.Warp(unitSpawnPoint.position);

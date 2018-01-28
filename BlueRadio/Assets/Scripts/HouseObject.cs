@@ -12,20 +12,27 @@ public class HouseObject : MonoBehaviour
         influence = 0;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        Debug.Log("TRIGGERED " + other.gameObject.tag);
         if (other.gameObject.tag == "PlayerSphere")
         {
-            influence = 1;
-            influenceIndicator.SetActive(true);
-            influenceIndicator.GetComponent<Renderer>().material.color = Color.blue;
+            //Debug.Log("TRIGGERED " + other.gameObject.tag);
+
+            if (other.gameObject.transform.parent.parent.GetComponent<UnitModeBehaviour>().IsConnectedToMotherbase)
+            {
+                influence = 1;
+                influenceIndicator.SetActive(true);
+                influenceIndicator.GetComponent<Renderer>().material.color = Color.blue;
+            }
         }
         else if (other.gameObject.tag == "EnemySphere")
         {
-            influence = 2;
-            influenceIndicator.SetActive(true);
-            influenceIndicator.GetComponent<Renderer>().material.color = Color.red;
+            if (other.gameObject.transform.parent.parent.GetComponent<UnitModeBehaviour>().IsConnectedToMotherbase)
+            {
+                influence = 2;
+                influenceIndicator.SetActive(true);
+                influenceIndicator.GetComponent<Renderer>().material.color = Color.red;
+            }
         }
     }
 

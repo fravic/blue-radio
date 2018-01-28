@@ -18,8 +18,8 @@ public class DestroyOnImpact : MonoBehaviour {
 
     private IEnumerator DestroyNextFrame(GameObject go)
     {
-        go.SetActive(false);
-        yield return null;
+        //go.SetActive(false);
+        yield return new WaitForSeconds(1f);
         Destroy(go);
     }
 }

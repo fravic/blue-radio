@@ -1414,7 +1414,6 @@ GameObject:
   - component: {fileID: 4255479333990168}
   - component: {fileID: 218425274989512492}
   - component: {fileID: 154994060749483210}
-  - component: {fileID: 114820251729669464}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Terrain
@@ -3271,7 +3270,7 @@ Transform:
   m_GameObject: {fileID: 1409618654272696}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 101.2, y: 2.91, z: 405.4}
-  m_LocalScale: {x: 17.21879, y: 5.15616, z: 8.6743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4402625859094286}
   - {fileID: 4956771837794824}
@@ -4217,8 +4216,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001251921468816}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.131, y: 0.15, z: -0.0047407}
-  m_LocalScale: {x: 0.01701406, y: 0.054943852, z: 0.044279967}
+  m_LocalPosition: {x: 0.131, y: 19.08, z: -0.0047407}
+  m_LocalScale: {x: 0.2058582, y: 0.2058582, z: 0.2058582}
   m_Children: []
   m_Father: {fileID: 4048294853420770}
   m_RootOrder: 0
@@ -4544,13 +4543,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1274607799927676}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0.005, y: 0, z: 0.24}
-  m_LocalScale: {x: 3.0891535, y: 10.316119, z: 6.132089}
+  m_LocalScale: {x: 51.303, y: 51.303, z: 51.303}
   m_Children: []
   m_Father: {fileID: 4048294853420770}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
 --- !u!4 &4614945470337900
 Transform:
   m_ObjectHideFlags: 1
@@ -5530,7 +5529,7 @@ Transform:
   m_GameObject: {fileID: 1465682298716112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.272, y: -0.573, z: -0.004677}
-  m_LocalScale: {x: 0.06208107, y: 0.14136207, z: 0.12449192}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4294017445141048}
   - {fileID: 4196812895756352}
@@ -14569,47 +14568,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   influence: 0
   influenceIndicator: {fileID: 1486851251317298}
---- !u!114 &114820251729669464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1374778000598534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 910771039, guid: f56d46228aee4734f9114056c53bb57e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  surfacevecs: []
-  tdataFloat: []
-  terrainData: {fileID: 15600000, guid: 45d55a2da18a7324bb1f6936ecab7f6a, type: 2}
-  xStart: 0
-  zStart: 0
-  roadSurface: {fileID: 0}
-  surfaceMesh: {fileID: 0}
-  surfaceCollider: {fileID: 0}
-  terrainDataStored: []
-  terrainChanges: []
-  terrainTrees: []
-  detailInstances: []
-  detailInstanceStarts: 
-  surfaceObjects: []
-  terrainTestPoints: []
-  splatData: []
-  addedTrees: []
-  terrainHeightsBackup: []
-  terrainTreesBackup: []
-  terrainDetailBackup: []
-  terrainSplatBackup: []
-  detailInstanceStartsBackUp: 
-  heightmapFlag: 0
-  splatmapFlag: 0
-  treeFlag: 0
-  detailFlag: 0
-  terrainDone: 0
-  backupFlagNotification: 0
-  backupObject: {fileID: 0}
-  terrain: {fileID: 0}
 --- !u!114 &114833883842794318
 MonoBehaviour:
   m_ObjectHideFlags: 1

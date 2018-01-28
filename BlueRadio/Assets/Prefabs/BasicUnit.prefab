@@ -531,7 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingIndicator: {fileID: 1518021118271360, guid: cbaee37b8ec52c84a9168998b0f55d9f,
     type: 2}
-  speed: 20
+  speed: 21
   acceleration: 20
 --- !u!114 &114895784004157222
 MonoBehaviour:

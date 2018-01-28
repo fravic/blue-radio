@@ -7,8 +7,8 @@ using UnityEngine.AI;
 public class UnitModeBehaviour : MonoBehaviour
 {
     public GameObject selectedIndicator;
+    public SphereCollider RadioSphereCollider;
 
-    //public SphereCollider RadioSphereCollider;
     public bool _isConnectedToMotherbase;
     public bool IsConnectedToMotherbase { get { return _isConnectedToMotherbase; }
       set { _isConnectedToMotherbase = value;
@@ -43,24 +43,42 @@ public class UnitModeBehaviour : MonoBehaviour
             return;
         }
 
-
         if (currentMode == UnitMode.Van)
         {
+            transform.rotation = Quaternion.FromToRotation(transform.up, Vector3.up) * transform.rotation;
+            RadioSphereCollider.enabled = false;
+
             currentMode = UnitMode.Tower;
             vanObj.GetComponent<Animator>().SetBool("isShrunk", true);
             towerObj.GetComponent<Animator>().SetBool("isShrunk", false);
 
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<ClickToMove>().StopMovement();
+
+            StartCoroutine(EnableTowerCr(0.75f));
         }
+#if false
         else
         {
             currentMode = UnitMode.Van;
             vanObj.GetComponent<Animator>().SetBool("isShrunk", false);
             towerObj.GetComponent<Animator>().SetBool("isShrunk", true);
 
-            GetComponent<NavMeshAgent>().enabled = true;
+            StartCoroutine(EnableVanCr(0.5f));
         }
+#endif
+    }
+
+    private IEnumerator EnableTowerCr(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        RadioSphereCollider.enabled = true;
+    }
+
+    private IEnumerator EnableVanCr(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GetComponent<Collider>().enabled = true;
     }
 
 

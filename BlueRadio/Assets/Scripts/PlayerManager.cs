@@ -62,11 +62,8 @@ public class PlayerManager : Singleton<PlayerManager> {
                 if (hit.collider.tag == "Unit")
                 {
                     selectedUnits.Add(hit.collider.gameObject);
-<<<<<<< HEAD
                     hit.collider.gameObject.GetComponent<UnitModeBehaviour>().selectedIndicator.SetActive(true);
-=======
                     Debug.Log("Unit selected: " + hit.collider.gameObject);
->>>>>>> 49f388e77bc709448cc0d14bdbf46893bb82015a
                 }
             }
         }

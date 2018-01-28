@@ -62,14 +62,15 @@ public class ClickToMove : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit))
-        {
-            var targetRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
-        }
-
         if (agent.isActiveAndEnabled) {
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, -transform.up, out hit))
+            {
+                var targetRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * speed);
+            }
+
             float dist = agent.remainingDistance;
             if (dist != Mathf.Infinity &&
                 agent.pathStatus == NavMeshPathStatus.PathComplete &&

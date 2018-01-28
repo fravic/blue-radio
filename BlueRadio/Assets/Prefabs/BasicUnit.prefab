@@ -190,11 +190,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1529498478343638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -25.3, y: 3.34, z: 23.2}
-=======
   m_LocalPosition: {x: -25.3, y: 0.5, z: 23.2}
->>>>>>> 49f388e77bc709448cc0d14bdbf46893bb82015a
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4577441332660082}
@@ -603,6 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedIndicator: {fileID: 1770527362777156}
+  RadioSphereCollider: {fileID: 135018551268314608}
   _isConnectedToMotherbase: 0
   ConnectedIndicator: {fileID: 1297913773167008}
   currentMode: 0

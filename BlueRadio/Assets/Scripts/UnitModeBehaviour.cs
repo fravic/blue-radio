@@ -15,6 +15,8 @@ public class UnitModeBehaviour : MonoBehaviour
             ConnectedIndicator.SetActive(value);
         } }
 
+
+    public List<HouseObject> activatedHouses;
     public GameObject ConnectedIndicator;
 
     public enum UnitMode
@@ -32,6 +34,7 @@ public class UnitModeBehaviour : MonoBehaviour
     {
         currentMode = UnitMode.Van;
         IsConnectedToMotherbase = false;
+        activatedHouses = new List<HouseObject>();
     }
 
 
@@ -67,6 +70,15 @@ public class UnitModeBehaviour : MonoBehaviour
             StartCoroutine(EnableVanCr(0.5f));
         }
 #endif
+    }
+
+    public void DisconnectAllHouses()
+    {
+        IsConnectedToMotherbase = false;
+        foreach (HouseObject house in activatedHouses)
+        {
+            house.DisconnectHouse();
+        }
     }
 
     private IEnumerator EnableTowerCr(float delay)

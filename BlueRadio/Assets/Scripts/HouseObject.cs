@@ -23,6 +23,7 @@ public class HouseObject : MonoBehaviour
                 influence = 1;
                 influenceIndicator.SetActive(true);
                 influenceIndicator.GetComponent<Renderer>().material.color = Color.blue;
+                other.gameObject.transform.parent.parent.GetComponent<UnitModeBehaviour>().activatedHouses.Add(this);
             }
             else
             {
@@ -37,6 +38,7 @@ public class HouseObject : MonoBehaviour
                 influence = 2;
                 influenceIndicator.SetActive(true);
                 influenceIndicator.GetComponent<Renderer>().material.color = Color.red;
+                other.gameObject.transform.parent.parent.GetComponent<UnitModeBehaviour>().activatedHouses.Add(this);
             }
             else
             {
@@ -49,6 +51,12 @@ public class HouseObject : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         func(other);
+    }
+
+    public void DisconnectHouse()
+    {
+        influence = 0;
+        influenceIndicator.SetActive(false);
     }
 
 

@@ -43,10 +43,10 @@ public class CameraControl : MonoBehaviour {
 
     void CapCameraPos()
     {
-        float xmin = -275;
-        float xmax = 47;
-        float zmin = -180;
-        float zmax = 197;
+        float xmin = 100;
+        float xmax = 370;
+        float zmin = 30;
+        float zmax = 400;
 
         Debug.Log(transform.position.x + " " + transform.position.y + " " + transform.position.z);
 
@@ -67,6 +67,6 @@ public class CameraControl : MonoBehaviour {
         transform.position += scrollingSpeed * new Vector3(x, 0.0f, z);
         if (togglePan)
             TrySidePan();
-//        CapCameraPos();
+        CapCameraPos();
     }
 }

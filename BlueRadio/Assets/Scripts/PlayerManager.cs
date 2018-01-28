@@ -42,11 +42,15 @@ public class PlayerManager : Singleton<PlayerManager> {
     {
         if (Input.GetMouseButtonDown(1))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000))
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
+            for (int i = 0; i < hits.Length; i++)
             {
-                foreach(var unit in selectedUnits)
-                    unit.GetComponent<ClickToMove>().MoveTo(hit.point);
+                if (hits[i].collider.tag == "Terrain")
+                {
+                    foreach (var unit in selectedUnits)
+                        unit.GetComponent<ClickToMove>().MoveTo(hits[i].point);
+                }
             }
         }
     }
@@ -55,15 +59,15 @@ public class PlayerManager : Singleton<PlayerManager> {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000))
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
+            for (int i = 0; i < hits.Length; i++)
             {
+                RaycastHit hit = hits[i];
                 if (hit.collider.tag == "Unit")
                 {
                     selectedUnits.Add(hit.collider.gameObject);
                     hit.collider.gameObject.GetComponent<UnitModeBehaviour>().selectedIndicator.SetActive(true);
-                    Debug.Log("Unit selected: " + hit.collider.gameObject);
                 }
             }
         }

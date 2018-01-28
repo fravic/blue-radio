@@ -38,6 +38,12 @@ public class ClickToMove : MonoBehaviour
         currentIndicator = GameObject.Instantiate(movingIndicator, dest, Quaternion.identity);
     }
 
+    private void OnDestroy()
+    {
+        StopMovement();
+        PlayerManager.Instance.Deselect(gameObject);
+    }
+
     public void StopMovement() {
         if (agent.isActiveAndEnabled) {
             agent.isStopped = true;

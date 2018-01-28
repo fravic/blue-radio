@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 54157143863053914}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: PlayerMotherbase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1005,7 +1005,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367179015755920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 351.49, y: 2.91, z: 199.99}
+  m_LocalPosition: {x: 104.67628, y: 96.420654, z: 332.3059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4680697717682922}

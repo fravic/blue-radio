@@ -20,6 +20,7 @@ public class UnitModeBehaviour : MonoBehaviour
     {
         Van,
         Tower,
+        Tank,
     };
 
     public UnitMode currentMode;
@@ -32,9 +33,16 @@ public class UnitModeBehaviour : MonoBehaviour
         IsConnectedToMotherbase = false;
     }
 
+
     // Changes the unit mode from Tower to Van, or vice versa
     public void Toggle()
     {
+        if (currentMode == UnitMode.Tank)
+        {
+            return;
+        }
+
+
         if (currentMode == UnitMode.Van)
         {
             currentMode = UnitMode.Tower;
@@ -54,4 +62,8 @@ public class UnitModeBehaviour : MonoBehaviour
         }
     }
 
+
 }
+
+
+

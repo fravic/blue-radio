@@ -29,7 +29,7 @@ public class ClickToMove : MonoBehaviour
     {
         UnitModeBehaviour mb = GetComponent<UnitModeBehaviour>();
         // Can't move if not in Van mode
-        if (mb.currentMode != UnitModeBehaviour.UnitMode.Van) {
+        if (mb.currentMode == UnitModeBehaviour.UnitMode.Tower) {
             return;
         }
         agent.destination = dest;

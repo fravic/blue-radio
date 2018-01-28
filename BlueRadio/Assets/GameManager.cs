@@ -44,19 +44,20 @@ public class GameManager : MonoBehaviour
         COUNT,
     };
 
-    [SyncVar]
+   // [SyncVar]
     private TeamType nextTeam;
 
     public TeamType team;
 
-    public override void OnStartLocalPlayer()
+
+   /* public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
         team = ++nextTeam;
         Debug.Log("initing motherbase...2324454");
 
         GetLocalMotherbaseComponent().Init(team);
-    }
+    }*/
 
    public PlayerMotherbase GetLocalMotherbaseComponent()
     {

@@ -1007,7 +1007,6 @@ MonoBehaviour:
   redBar: {fileID: 440649119}
   aggressiveUnitBtn: {fileID: 222077471}
   constructionUnitBtn: {fileID: 1773201988}
-  isAtStartup: 1
 --- !u!114 &1120150842
 MonoBehaviour:
   m_ObjectHideFlags: 0

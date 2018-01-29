@@ -20,12 +20,17 @@ public class UIController : NetworkBehaviour {
 
   float gameStartTime;
 
+    public void Start() {
+        aggressiveUnitBtn.onClick.AddListener(AddAggressiveUnit);
+        constructionUnitBtn.onClick.AddListener(AddConstructionUnit);
+        StartCoroutine(StartHostCr(1.0f));
+    }
 
-
-  public void Start() {
-    aggressiveUnitBtn.onClick.AddListener(AddAggressiveUnit);
-    constructionUnitBtn.onClick.AddListener(AddConstructionUnit);
-  }
+    private IEnumerator StartHostCr(float delay)
+    {      
+        yield return new WaitForSeconds(delay);
+        NetworkManager.singleton.StartHost();
+    }
 
     private void ManageIconGreyOut()
     {

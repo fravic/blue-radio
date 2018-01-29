@@ -94,7 +94,7 @@ public class PlayerMotherbase : NetworkBehaviour {
                 break;
             case TeamType.VERIZONE:
                 Debug.Log("initing VERIZONE");
-                SphereRenderer.material.color = Color.red;
+                SphereRenderer.material.color = Color.blue; //Color.red;
                 break;
         }
     }
